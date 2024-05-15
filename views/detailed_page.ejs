@@ -20,7 +20,10 @@
     </span>
 
     <h3><%= feedbackData.title %></h3>
-    <img  id="complaint_feature" src="/images/complaint_feature.png" alt="complaint_image">
+    <!-- <img  id="complaint_feature" src="/images/complaint_feature.png" alt="complaint_image"> -->
+
+    <img id="complaint_feature" src="/upload/<%= feedbackData.featureImage %>" alt="complaint_image">
+
     <p><%= feedbackData.content %></p>
     
     <div class="ctn_delete">
