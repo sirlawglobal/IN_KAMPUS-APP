@@ -17,6 +17,7 @@ font-family: inter;
 
 
 .error {
+  font-size: 10px;
   color: red;
 }
 
@@ -844,7 +845,7 @@ font-size: 11px;
 .detail_Page form{
   /* width: 80%; */
   text-align: left;
-  border: 2px  solid red;
+  /* border: 2px  solid red; */
 }
 
 .detail_Page form > *{
@@ -1229,7 +1230,7 @@ margin:auto;
  }
 
 .subscription div:last-of-type{
-margin-left: 30px;
+padding: 0 10px;
 }
 
 .subscription div:last-of-type > h3{
@@ -1246,7 +1247,10 @@ margin-left: 30px;
       padding: 6px;
       font-size: 9px;
     }
-     
+     .input_ctn{
+      /* width: 40%; */
+      /* border: 2px solid red; */
+     }
 
   /* create complaint */
   .create_complaint_box form input[type="text"],
