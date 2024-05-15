@@ -63,7 +63,7 @@ const { getAdminSignUpPage ,PostAdminSignUp, getAdminLoginPage, PostAdminLogin, 
 const {getUserSignUpPage ,postUserSignUpPage, getUserLoginPage ,  postUserLoginPage,   getUserProfilePage , userLogout} = require("./controller/user_controller")
 
 
-const {getHomePage,FeedBackPage,   FeedBack ,CreateFeedBackPage ,detailedPage , get404Page, getaboutPage} = require("./controller/feedback_controller");
+const {getHomePage,FeedBackPage,   FeedBack ,CreateFeedBackPage ,detailedPage , get404Page, getaboutPage, deleteFeedBack} = require("./controller/feedback_controller");
 
 const {addComment, getUpdateComment, updateComment, deleteComment} = require("./controller/comment_controller");
 
@@ -86,7 +86,8 @@ app.post("/feedback/new",   FeedBack  ); // posting created feedback
 
 app.get('/feedback/:feedbackId', detailedPage);
 
-// router.post('/feedback/:feedbackId/comments', commentController.addComment);
+app.delete('/feedback/:feedbackId', adminAuth, deleteFeedBack); // deleting the product
+
 
 app.post('/feedback/:feedbackId/comments', addComment);
 

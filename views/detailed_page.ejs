@@ -41,8 +41,11 @@
             </span>
     
             
-            <form action="/feedback/<%= feedbackData._id %>/delete" method="POST">
+            <!-- <form action="/feedback/<%= feedbackData._id %>" method="POST"> -->
                 <!-- <input type="image" src="/images/delete.svg"> -->
+
+                   <form action="/feedback/<%= feedbackData._id %>?_method=DELETE" method="post">
+
                 <button>Delete</button>
                 </form>
                  

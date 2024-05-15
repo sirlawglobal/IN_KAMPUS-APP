@@ -113,7 +113,17 @@ const detailedPage = (req, res) => {
     });
 };
 
-
+const deleteFeedBack =  (req, res) =>{
+  const feedbackId=req.params.feedbackId;
+  FeedBackModel.findByIdAndDelete(feedbackId)
+  .then( ()=>{
+      res.redirect("/feedback");
+  })
+  .catch( err =>{
+      req.flash("errorMsg", err._message);
+      res.redirect("/feedback");
+  })
+  }
 
 
 
@@ -124,5 +134,6 @@ module.exports = {
   CreateFeedBackPage,
   detailedPage,
   get404Page,
-  getaboutPage
+  getaboutPage,
+  deleteFeedBack
 }
