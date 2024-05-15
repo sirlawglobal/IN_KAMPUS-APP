@@ -84,7 +84,7 @@ const getUserLoginPage = (req, res)=>{
         }
         
         req.session.userId = user._id;
-        res.redirect("/user/profile");
+        res.redirect("/feedback");
         console.log( "login successfully sheeee" )
       })
       .catch(error =>{

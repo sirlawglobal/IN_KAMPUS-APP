@@ -86,7 +86,7 @@ const PostAdminLogin = (req , res) =>{
     }
     // console.log(req.session)
     req.session.adminId = admin._id;
-    res.redirect("/admin/profile");
+    res.redirect("/feedback");
   })
   .catch(error =>{
     console.log(error);
