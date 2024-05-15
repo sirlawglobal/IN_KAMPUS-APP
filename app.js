@@ -49,7 +49,7 @@ app.use(session({
     });
 
   //db connection mongodb://127.0.0.1:27017
-mongoose.connect("mongodb://127.0.0.1:27017/in_kampus")
+mongoose.connect("mongodb+srv://sirlawdev:slg7082%23@in-kampus.jwojjcd.mongodb.net/?retryWrites=true&w=majority&appName=In-Kampus")
 .then((res) =>{
 console.log("Clap for tinubu....Database has Connected Succesfully")
 })
