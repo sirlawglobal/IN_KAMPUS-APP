@@ -1,0 +1,138 @@
+
+
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <link rel="stylesheet" href="../../style.css">
+        <title>In_KAMPUS</title>
+     
+    
+      </head>
+      
+      <body>
+        <div class="overlay"></div>
+        <header>
+          <a href="/">
+            <img src="/images/logo_white.svg" alt="logo">
+          </a>
+          <nav>
+            <a href="/">Home</a>
+            <a href="/upcoming">Campus Navigation</a>
+            <a href="/feedback">Student Feedback</a>
+            <a href="/upcoming">Transport Efficiency</a>
+            <a href="">About Us</a>
+          </nav>
+      
+          <% if (userSession || adminSession ) { %>
+          <div>
+            <form id="logoutForm" action="/user/logout" method="post">
+              <button type="button" onclick="confirmAction('logoutForm', 'Dear User, are you sure you want to log out?')">Logout</button>
+            </form>
+            <img id="menu" src="/images/dot.png" alt="Menu">
+          </div>
+          <% } else { %>
+          <div>
+            <button><a href="/user/login">Login</a></button>
+            <img id="menu" src="/images/dot.png" alt="Menu">
+          </div>
+         
+          <% } %>
+         
+        </header>
+      <!-- mobile sidebar to be display only on mobile view -->
+        <div class="sidebar-container">
+          <div class="sidebar">
+            <div class="nav-row">
+              <div></div>
+              <a href="#">
+                <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" fill="black" height="40" viewBox="0 -960 960 960" width="40">
+                  <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+                </svg>
+              </a>
+            </div>
+            <div>
+              <a href="/">Home</a>
+              <a href="/upcoming">Campus Navigation</a>
+              <a href="/feedback">Student Feedback</a>
+              <a href="/upcoming">Transport Efficiency</a>
+              <a href="/about">About Us</a>
+            </div>
+          </div>
+        </div>
+      
+        <script>
+          const hamburger = document.querySelector('#menu');
+          const modalContainer = document.querySelector('.sidebar-container');
+          const sidebar = document.querySelector('.sidebar');
+          const closeIcon = document.querySelector('.icon-close');
+      
+          // Display the menu when the menu icon is clicked
+          if (hamburger) {
+            hamburger.onclick = function() {
+              modalContainer.classList.add('show');
+              sidebar.classList.add('show');
+            }
+          }
+      
+          // Closing the menu, if the close icon is clicked
+          if (closeIcon) {
+            closeIcon.onclick = function() {
+              modalContainer.classList.remove('show');
+              sidebar.classList.remove('show');
+            }
+          }
+      
+          // Closing the menu, if anywhere on the window is clicked
+          window.onclick = function(event) {
+            if (event.target === modalContainer) {
+              modalContainer.classList.remove('show');
+              sidebar.classList.remove('show');
+            }
+          }
+      
+          // Ensure the sidebar is hidden initially
+          window.onresize = function() {
+            if (window.innerWidth >= 375) {
+              modalContainer.classList.remove('show');
+              sidebar.classList.remove('show');
+            }
+          }
+      
+          window.onload = function() {
+            modalContainer.classList.remove('show');
+            sidebar.classList.remove('show');
+          }
+        </script>
+
+
+<script>
+  function confirmAction(formId, message) {
+    swal({
+      title: "Confirm Action",
+      text: message,
+      icon: "warning",
+      buttons: ["Cancel", "Proceed"],
+      dangerMode: true,
+    customClass: {
+      container: 'custom-swal-container',
+      popup: 'custom-swal-popup',
+      header: 'custom-swal-header',
+      title: 'custom-swal-title',
+      content: 'custom-swal-content',
+      actions: 'custom-swal-actions',
+      confirmButton: 'custom-swal-confirm',
+      cancelButton: 'custom-swal-cancel',
+    }
+    })
+    .then((willProceed) => {
+      if (willProceed) {
+        // If user confirms, submit the form
+        document.getElementById(formId).submit();
+      }
+    });
+  }
+</script>
+     

@@ -1,0 +1,16 @@
+<%- include("./layout/header.ejs") %>
+
+<main class="profile_details">
+
+  <section class="Hero">
+        <h2>welcome back, <span><%=profile.name %></span></h2>
+
+
+        <form action="/user/logout" method="post" onsubmit="return confirm('are you sure you want to log out?')">
+          <button>logout</button>
+          </form>
+   </section>
+</main>
+
+
+<%- include("./layout/footer.ejs") %>

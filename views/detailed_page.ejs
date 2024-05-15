@@ -1,0 +1,115 @@
+<%- include("./layout/header.ejs") %>
+<!-- Render the feedback content -->
+
+<main class="detail_Page">
+    <% if (feedbackData.visibility === 'visible') { %>
+        <h1><%= feedbackData.author %></h1>
+    <% } else { %>
+        <h1>Anonymous</h1>
+    <% } %>
+    <span>
+        <img src="/images/avarter.png" alt="icon_avatar">
+        <div class="article_sender_details">
+            <% if (feedbackData.visibility === 'visible') { %>
+                <h4><%= feedbackData.author %></h4>
+            <% } else { %>
+                <h4>Anonymous</h4>
+            <% } %>
+            <p><%= feedbackData.elapsedTime %></p>
+        </div>
+    </span>
+
+    <h3><%= feedbackData.title %></h3>
+    <img  id="complaint_feature" src="/images/complaint_feature.png" alt="complaint_image">
+    <p><%= feedbackData.content %></p>
+    
+    <div class="ctn_delete">
+
+
+
+        <%if(adminSession) {%>
+
+            <span>
+                <p>
+                    <img src="/images/comment.png" alt="icon_comment">
+                    <%= feedbackData.comments.length %> 
+                </p>
+                
+            </span>
+    
+            
+            <form action="/feedback/<%= feedbackData._id %>/delete" method="POST">
+                <!-- <input type="image" src="/images/delete.svg"> -->
+                <button>Delete</button>
+                </form>
+                 
+                <%}else{%>
+                    <span>
+                        <p>
+                            <img src="/images/comment.png" alt="icon_comment">
+                            <%= feedbackData.comments.length %> 
+                        </p>
+                        
+                    </span>
+            
+                    
+        
+            <%}%>
+
+
+        
+
+    </div>
+
+    <hr>
+    <h2>Comments</h2>
+    <% if (feedbackData.comments.length > 0) { %>
+        <ul>
+            <% feedbackData.comments.forEach(comment => { %>
+                <li class="comment_list">
+                    <strong><%= comment.author %></strong><br> <%= comment.content %>
+                </li>
+            <% }); %>
+        </ul>
+    <% } else { %>
+        <p>No comments yet.</p>
+    <% } %>
+
+    <!-- comment toggle -->
+    <button id="toggleFormButton">Add Comment</button>
+    <div id="commentFormContainer" style="display: none;">
+        <form action="/feedback/<%= feedbackData._id %>/comments" method="POST">
+            <h2>Add a Comment</h2>
+            <div>
+                <label for="author">Author:</label><br>
+                <input type="text" id="author" name="author" required>
+            </div><br>
+            <div>
+                <label for="content">Comment:</label><br>
+                <textarea id="content" name="content" rows="4" required></textarea>
+            </div>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <!-- Delete feedback button -->
+   
+</main>
+
+<script>
+    const toggleFormButton = document.getElementById('toggleFormButton');
+    const commentFormContainer = document.getElementById('commentFormContainer');
+
+    toggleFormButton.addEventListener('click', () => {
+        if (commentFormContainer.style.display === 'none') {
+            commentFormContainer.style.display = 'block';
+            toggleFormButton.textContent = 'Close';
+        } else {
+            commentFormContainer.style.display = 'none';
+            toggleFormButton.textContent = 'Add Comment';
+        }
+    });
+</script>
+
+<%- include("./layout/footer.ejs") %>

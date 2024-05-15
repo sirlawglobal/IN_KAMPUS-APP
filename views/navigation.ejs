@@ -1,0 +1,39 @@
+<%- include("./layout/header.ejs") %>
+
+<main>
+  <section class="Navigation">
+      <div class="display_map">
+        <img src="./images/map.png" alt="map">
+      </div>
+
+      <div class="search_map_container">
+          <div class="icon_row">
+            <img src="/images/iconoir_trekking.png">
+            <img src="/images/ion_bicycle-outline.png">
+            <img src="/images/la_car (1).png">
+            <img src="/images/ion_bus-outline.png">
+          </div>
+
+          <form action="" method="post">
+            <p>Route to...</p>
+            <div>
+              <img src="./images/Location-start.png">
+               <input type="text" placeholder="Start">
+            </div>
+           
+            <div>
+              <img src="./images/destination.png">
+               <input type="text" placeholder="End">
+            </div>
+           <input class="submit_btn" type="submit" value="Go Now">
+
+          </form>
+       
+
+      </div>
+  </section>   
+  
+        
+  
+  </main>
+        <%- include("./layout/footer.ejs") %>

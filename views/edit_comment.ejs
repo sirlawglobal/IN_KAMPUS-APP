@@ -1,0 +1,15 @@
+<%- include("./layout/header.ejs") %>
+
+<section class="Hero">
+<!-- Edit comment form -->
+<form action="/feedback/<%= feedbackId %>/comments/<%= comment._id %>/edit" method="POST" id="similar_form">
+  <h2>Edit Comment</h2>
+  <div>
+      <label for="content">Content:</label>
+      <textarea id="content" name="content" rows="4" required><%= comment.content %></textarea>
+  </div>
+  <button type="submit">Save Changes</button>
+</form>
+
+</section>
+<%- include("./layout/footer.ejs") %>

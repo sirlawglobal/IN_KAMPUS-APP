@@ -1,0 +1,198 @@
+<%- include("./layout/header.ejs") %>
+
+        <main>
+           
+        
+         
+            <section class="top_section">
+                <div class="news_search_ctn">
+                   
+                     <button>search</button>
+                    <input type="text">
+
+               </div>
+
+                <div class="news_icon_row">
+                  
+                  <img src="/images/setting.png"  alt="menu">
+                  <img src="/images/Ellipse 2.png"  alt="menu">
+                  <!-- <img src="/images/Ellipse 2.png"  alt="menu">
+                  <img src="/images/Ellipse 2.png"  alt="menu"> -->
+                </div>
+            </section>
+           
+  <section class=" news_section">
+
+              <div class="left_colums">
+
+                  
+                   <div class="feedback_ctn">
+    <% feedbacksData.forEach((feedback) =>{ %>
+
+      <% if (userSession || adminSession ) { %>
+    <article>
+        <div class="article_sender">
+            <span>
+                <img src="/images/avarter.png" alt="icon_avatar">
+                <div class="article_sender_details">
+                    <!-- <h4><%= feedback.author %></h4> -->
+                    <% if (feedback.visibility === 'visible') { %>
+                      <h4><%= feedback.author %></h4>
+                  <% } else { %>
+                      <h4>Anonymous</h4>
+                  <% } %>
+                    <p><%= feedback.elapsedTime %></p>
+                </div>
+            </span>
+            <img src="/images/dot.png" alt="icon_dot">
+        </div>
+
+        <div class="article_details">
+            <div class="left_details">
+                <!-- <img src="/images/complaint_feature.png" alt="complaint_image"> -->
+                <img class="complaint_pic" src="/upload/<%= feedback.featureImage%>" alt="complaint_image">
+                <!-- <img src="/upload/akanji_featureImage.jpg" alt="complaint_image"> -->
+
+                <span>
+                    <p><a href="/feedback/<%= feedback._id %>">Add a comment</a></p>
+                    <p><img src="/images/comment.png" alt="icon_comment"> <%= feedback.comments.length %> comments</p>
+                </span>
+            </div>
+
+            <div class="right_details">
+                <h3><%= feedback.title %></h3>
+               
+                <p class="fdb_content"><%= feedback.content.substring(0, 50) %> <a href="/feedback/<%= feedback._id %>">...read more</a></p>
+            </div>
+        </div>
+    </article>
+    <% } else { %>
+      <article>
+        <div class="article_sender">
+            <span>
+                <img src="/images/avarter.png" alt="icon_avatar">
+                <div class="article_sender_details">
+                    <!-- <h4><%= feedback.author %></h4> -->
+                    <% if (feedback.visibility === 'visible') { %>
+                      <h4><%= feedback.author %></h4>
+                  <% } else { %>
+                      <h4>Anonymous</h4>
+                  <% } %>
+                    <p><%= feedback.elapsedTime %></p>
+                </div>
+            </span>
+            <img src="/images/dot.png" alt="icon_dot">
+        </div>
+
+        <div class="article_details">
+            <div class="left_details">
+                <!-- <img src="/images/complaint_feature.png" alt="complaint_image"> -->
+                <img class="complaint_pic" src="/upload/<%= feedback.featureImage%>" alt="complaint_image">
+                <!-- <img src="/upload/akanji_featureImage.jpg" alt="complaint_image"> -->
+
+                <span>
+                    <p><a href="/user/login">Add a comment</a></p>
+                    <p><img src="/images/comment.png" alt="icon_comment"> <%= feedback.comments.length %> comments</p>
+                </span>
+            </div>
+
+            <div class="right_details">
+                <h3><%= feedback.title %></h3>
+               
+                <p class="fdb_content"><%= feedback.content.substring(0, 50) %> <a href="/user/login">">...read more</a></p>
+            </div>
+        </div>
+    </article>
+    <% } %>
+    <% }); %>
+</div>
+
+<% if (userSession || adminSession ) { %>
+     <form action="/createFeedBack">
+                        <h4>feel like posting something...</h4>
+                        <button id="create_frust_btn" >
+                          Create NOW
+                        </button>
+                        
+     </form> 
+     <% } else { %>  
+
+        <form action="/user/login">
+            <h4>feel like posting something...</h4>
+            <button id="create_frust_btn" >
+             Login to  Create NOW
+            </button>
+            
+</form> 
+
+     <!-- <form action="/user/login">
+            <h4>feel like posting something...</h4>
+            <button>Login to create Now</button>
+        </form> -->
+            <% } %>
+                
+                    
+
+              </div>
+
+              <div class="right_colums">
+                    <h3>Recent News</h3>
+
+                    <div class="blog">
+                        <img src="/images/featured.png" alt="featured_image">
+                        <div class="blog_text">
+                          <h4>Faculty Sportlight</h4>
+                          <p>All 100 level students are now expected to check their portals for their result. ... Read more</p>
+                        </div>
+
+                    </div>
+                    
+                    <div class="blog">
+                        <img src="/images/featured.png" alt="featured_image">
+                        <div class="blog_text">
+                          <h4>Faculty Sportlight</h4>
+                          <p>All 100 level students are now expected to check their portals for their result. ... Read more</p>
+                        </div>
+
+                    </div>
+                    
+                    
+                   
+                    
+                    <hr />
+
+                    <div class="market_heading">
+                      <h3>Market Gist</h3>
+                      <p>See all</p>
+                    </div>
+
+                    <div class="market_gist_ctn">
+                      
+                      
+                      <div>
+                          <p>Mummy Jane Puff-puff</p>
+                        <img src="/images/featured.png" alt="featured_image">
+                      </div>
+
+
+                      <div>
+                          <p>New Fried Rice @ Mama K</p>
+                        <img src="/images/featured.png" alt="featured_image">
+                      </div>
+                      
+                  
+                  </div>
+
+                  <hr />
+
+                  <p>Group Conversation</p>
+                  <span class="create_conv">
+                    <img src="/images/icon_create.png" alt="icon_create">
+                     <p>Create new group</p>
+                  </span>
+                 
+              </div>
+  </section>
+         
+        </main>
+        <%- include("./layout/footer.ejs") %>

@@ -1,0 +1,24 @@
+<%- include("./layout/header.ejs") %>
+
+<main class="create_complaint_box">
+          
+  <section class="Hero">      
+  <form action="/user/signup" method="post"  id="similar_form">
+    <h3>Welcome user, Kindly Register</h3>
+    <p class="error"><%=error %></p>
+
+    <input type="text" name="name" id="" placeholder="Fullname" required><br>
+
+    <input type="email" name="email" id="" placeholder="eamil" required><br>
+
+    <input type="password" name="password" id="" placeholder="password" required><br>
+
+    <input type="submit" value="submit">
+    <div>
+      <p>Already Have an account? <a href="/user/login">Log in </a></p>
+  </div>
+  </form>
+</section>
+</main>  
+
+<%- include("./layout/footer.ejs") %>
